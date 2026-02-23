@@ -48,49 +48,7 @@ MediSync follows a **microservices-based distributed architecture**, where each 
 
 ## Architecture Diagram
 
-```mermaid
-flowchart TB
-
-  subgraph Client_Layer
-    WEB["Hospital Web Application - React"]
-    ADMIN["Administrative Portal"]
-  end
-
-  subgraph Edge_Layer
-    GW["API Gateway"]
-  end
-
-  subgraph Services_Layer
-    SEC["Security Service - Auth / JWT / RBAC"]
-    CORE["MediSync Core Service - Business Logic"]
-    APPT["Appointments Service"]
-    NOTIF["Notifications Service"]
-  end
-
-  subgraph Data_Layer
-    DB_SEC[(Security DB)]
-    DB_CORE[(MediSync DB)]
-    DB_APPT[(Appointments DB)]
-    DB_NOTIF[(Notifications DB)]
-  end
-
-  WEB --> GW
-  ADMIN --> GW
-
-  GW --> SEC
-  GW --> CORE
-  GW --> APPT
-  GW --> NOTIF
-
-  SEC --> DB_SEC
-  CORE --> DB_CORE
-  APPT --> DB_APPT
-  NOTIF --> DB_NOTIF
-
-  CORE <--> APPT
-  APPT --> NOTIF
-  CORE --> NOTIF
-```
+![image alt](https://github.com/ObjectOrienters/MediSync/blob/main/assets/p1.png)
 
 ## Architectural Highlights
 
@@ -107,43 +65,7 @@ flowchart TB
 
 This diagram illustrates the production flow when hospital staff create or update an appointment.
 
-```mermaid
-sequenceDiagram
-  autonumber
-
-  actor Staff as Hospital Staff (React App)
-  participant GW as API Gateway
-  participant SEC as Security Service
-  participant APPT as Appointments Service
-  participant CORE as MediSync Core Service
-  participant NOTIF as Notifications Service
-  participant DBa as Appointments DB
-  participant DBc as MediSync DB
-
-  Staff->>GW: Create Appointment Request
-  GW->>SEC: Validate JWT & Role
-
-  alt Authorized
-      SEC-->>GW: Access Granted
-      GW->>APPT: Forward Request
-      APPT->>DBa: Persist Appointment
-      DBa-->>APPT: Stored
-
-      APPT->>CORE: Validate Business Rules
-      CORE->>DBc: Verify Patient & Workflow
-      DBc-->>CORE: Valid
-      CORE-->>APPT: Approved
-
-      APPT->>NOTIF: Trigger Notification
-      NOTIF-->>Staff: Confirmation / Reminder
-
-      APPT-->>GW: Success Response
-      GW-->>Staff: 200 OK
-  else Unauthorized
-      SEC-->>GW: Access Denied
-      GW-->>Staff: 401 / 403 Error
-  end
-```
+![image alt](https://github.com/ObjectOrienters/MediSync/blob/main/assets/p2.png)
 
 ---
 
