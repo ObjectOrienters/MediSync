@@ -50,23 +50,24 @@ MediSync follows a **microservices-based distributed architecture**, where each 
 
 ```mermaid
 flowchart TB
-  subgraph Client_Layer["Client Layer"]
-    WEB[Hospital Web Application (React)]
-    ADMIN[Administrative Portal]
+
+  subgraph Client_Layer
+    WEB["Hospital Web Application - React"]
+    ADMIN["Administrative Portal"]
   end
 
-  subgraph Edge_Layer["Edge Layer"]
-    GW[API Gateway]
+  subgraph Edge_Layer
+    GW["API Gateway"]
   end
 
-  subgraph Services_Layer["Microservices Layer"]
-    SEC[Security Service\n(Authentication / JWT / RBAC)]
-    CORE[MediSync Core Service\n(Business Logic Engine)]
-    APPT[Appointments Service]
-    NOTIF[Notifications Service]
+  subgraph Services_Layer
+    SEC["Security Service - Auth / JWT / RBAC"]
+    CORE["MediSync Core Service - Business Logic"]
+    APPT["Appointments Service"]
+    NOTIF["Notifications Service"]
   end
 
-  subgraph Data_Layer["Service-Owned Databases"]
+  subgraph Data_Layer
     DB_SEC[(Security DB)]
     DB_CORE[(MediSync DB)]
     DB_APPT[(Appointments DB)]
