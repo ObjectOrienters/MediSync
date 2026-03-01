@@ -200,6 +200,12 @@ These services will extend the system into a full healthcare digital ecosystem.
 
 ---
 
+## 🎬 MediSync Demo Video
+
+[![MediSync Demo](https://github.com/ObjectOrienters/MediSync/blob/main/assets/thumbnail.png)](https://drive.google.com/file/d/1uHKNb178oB8_OEY0qRFL97pYhVg0MdgT/view?usp=sharing)
+
+---
+
 # 👥 Team
 
 Designed and Developed by:
