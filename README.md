@@ -4,7 +4,8 @@
 
 **Production-Deployed | Microservices Architecture | Hospital Environment**
 
-Designed, architected, and deployed as a production-grade microservices system in a live hospital environment.
+Designed, architected, and deployed as a production-grade microservices system in a live hospital environment. 
+[Read the success story](https://www.bethlehem.edu/2026/02/27/software-engineering-hospital-system-deployment/)
 
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
